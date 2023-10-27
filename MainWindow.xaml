@@ -1,0 +1,34 @@
+﻿<Window x:Class="WpfApp2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp2"
+        mc:Ignorable="d"
+        Title="Database" Height="650" Width="1000"
+        ResizeMode="NoResize">
+    <Grid>
+        <Button Content="Create DB" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="90" Height="19" RenderTransformOrigin="0.504,0.028" Click="CreateDB"/>
+        <Button Content="Load DB" HorizontalAlignment="Left" Margin="105,10,0,0" VerticalAlignment="Top" Width="90" Height="20" Click="LoadDB"/>
+        <Button Content="Save DB&#xD;&#xA;Save DB" HorizontalAlignment="Left" Margin="200,10,0,0" VerticalAlignment="Top" Width="90" Height="20" Click="SaveDB"/>
+        <Button Content="Add column" HorizontalAlignment="Left" Margin="536,10,0,0" VerticalAlignment="Top" Width="90" Height="20" Click="AddColumn"/>
+        <Button Content="Remove duplicate rows" HorizontalAlignment="Left" Margin="747,9,0,0" VerticalAlignment="Top" Width="205" Height="20" Click="RemoveDuplicateRows"/>
+        <Button Content="Add table" HorizontalAlignment="Left" Margin="314,10,0,0" VerticalAlignment="Top" Width="90" Height="20" Click="CreateTable"/>
+        <Button Content="Delete table" HorizontalAlignment="Left" Margin="409,10,0,0" VerticalAlignment="Top" Width="90" Height="20" Click="DeleteTable"/>
+        <Button Content="Delete column" HorizontalAlignment="Left" Margin="631,10,0,0" VerticalAlignment="Top" Width="90" Height="20" Click="DeleteColumn"/>
+        <TabControl Margin="10,35,10,10" Name="tabTables">
+            <TabControl.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock
+                    Text="{Binding Header}" />
+                </DataTemplate>
+            </TabControl.ItemTemplate>
+            <TabControl.ContentTemplate>
+                <DataTemplate>
+                    <DataGrid ItemsSource="{Binding Content, Mode=TwoWay}" AutoGenerateColumns="True" SelectionUnit="CellOrRowHeader">
+                    </DataGrid>
+                </DataTemplate>
+            </TabControl.ContentTemplate>
+        </TabControl>
+    </Grid>
+</Window>

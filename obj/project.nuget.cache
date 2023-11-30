@@ -1,8 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "Wak3c/vZwZ7OYqrpeiVEo8y1p5e+oCu46KqymghErN97bOu+uRyJTR620khNWLLzAKTvM2jrnM8bCmm+Siyr0g==",
+  "dgSpecHash": "ecD9M+D/MgePEB26mxYACNAs5Quya+mezucbJrEHIOFCrS9dlGncu3rNuA/w6Fn/YsA2pyVVd5paHukkx+m1pA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\forus\\source\\repos\\WpfApp2\\WpfApp2.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\Users\\forus\\source\\repos\\DbLocal\\DbLocal.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\forus\\.nuget\\packages\\stub.system.data.sqlite.core.netstandard\\1.0.118\\stub.system.data.sqlite.core.netstandard.1.0.118.nupkg.sha512",
+    "C:\\Users\\forus\\.nuget\\packages\\system.data.sqlite.core\\1.0.118\\system.data.sqlite.core.1.0.118.nupkg.sha512"
+  ],
   "logs": []
 }

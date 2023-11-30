@@ -18,8 +18,6 @@ namespace WpfApp2
                 case "Integer": colType = typeof(int); break;
                 case "Real": colType = typeof(double); break;
                 case "Char": colType = typeof(char); break;
-                case "Complex Integer": colType = typeof(ComplexInteger); break;
-                case "Complex Real": colType = typeof(ComplexReal); break;
             }
             return colType;
         }
@@ -30,8 +28,6 @@ namespace WpfApp2
             Add("Char");
             Add("Integer");
             Add("Real");
-            Add("Complex Integer");
-            Add("Complex Real");
         }
     }
 

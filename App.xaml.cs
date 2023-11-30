@@ -10,12 +10,6 @@ namespace WpfApp2
     {
         public App()
         {
-            Type[] extraAllowedTypes = new Type[]
-            {
-                typeof(ComplexInteger),
-                typeof(ComplexReal)
-            };
-            AppDomain.CurrentDomain.SetData("System.Data.DataSetDefaultAllowedTypes", extraAllowedTypes);
         }
     }
 }

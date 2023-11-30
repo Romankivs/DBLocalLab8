@@ -1,14 +1,11 @@
-﻿using System;
+﻿using DbLocal;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Data;
-using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Documents;
-using System.Xml.Serialization;
 
 namespace WpfApp2
 {
@@ -22,25 +19,23 @@ namespace WpfApp2
     {
         public static IList<TabItem>? Deserialize(string a_fileName)
         {
-            XmlSerializer deserializer = new XmlSerializer(typeof(List<TabItem>));
-
-            TextReader reader = new StreamReader(a_fileName);
-
-            object? obj = deserializer.Deserialize(reader);
-
-            reader.Close();
-
-            return obj as List<TabItem>;
+            List<DataTable> retrievedDataTables = DbSerializer.ReadListFromSQLite(a_fileName);
+            List<TabItem> items = new List<TabItem>();
+            foreach (var table in retrievedDataTables)
+            {
+                items.Add(new TabItem { Header = table.TableName, Content = table });
+            }
+            return items;
         }
 
         public static void Serialization(IList<TabItem> a_stations, string a_fileName)
         {
-            XmlSerializer serializer = new XmlSerializer(typeof(List<TabItem>));
-
-            using (var stream = File.OpenWrite(a_fileName))
+            List<DataTable> tables = new List<DataTable>();
+            foreach (var item in a_stations)
             {
-                serializer.Serialize(stream, a_stations);
+                tables.Add(item.Content);
             }
+            DbSerializer.SaveListToSQLite(tables, a_fileName);
         }
     }
 
@@ -64,8 +59,8 @@ namespace WpfApp2
         {
             var dialog = new Microsoft.Win32.SaveFileDialog();
             dialog.FileName = "Database";
-            dialog.DefaultExt = ".dbase";
-            dialog.Filter = "Database files (.dbase)|*.dbase";
+            dialog.DefaultExt = ".db";
+            dialog.Filter = "Database files (.db)|*.db";
 
             bool? result = dialog.ShowDialog();
 
@@ -79,7 +74,7 @@ namespace WpfApp2
         private void LoadDB(object sender, RoutedEventArgs e)
         {
             var dialog = new Microsoft.Win32.OpenFileDialog();
-            dialog.Filter = "Database files (.dbase)|*.dbase";
+            dialog.Filter = "Database files (.db)|*.db";
 
             bool? result = dialog.ShowDialog();
 
